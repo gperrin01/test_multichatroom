@@ -7,14 +7,34 @@
   list-style-type: none;
 }
 
-#messages-list {
-  height: 450px;
+/****************
+CHAT LIST
+*****************/
+.highlight {
+  background-color: #FF3056;
+}
+#chatroom_list ul {
+  padding-left: 0px;
+}
+#chatroom_list li {
+  line-height: 35px;
 }
 
-#messages-list ul {
+/****************
+MESSAGES
+*****************/
+#messages-list {
+  height: 450px;
+  overflow: hidden; 
+}
+
+#chatlines {
   word-break: break-all;
 }
 
+/****************
+FORM TO SEND MSG
+*****************/
 #write_msg {
   text-align: center;
 }

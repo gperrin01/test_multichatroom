@@ -6,17 +6,16 @@ var express = require('express');
 var app = express();
 var http = require('http');
 server = http.createServer(app); 
-var io = require('socket.io').listen(server);
 
 app.use(express.static(__dirname + '/public'));
 app.set('/views', './views');
 app.set('view engine', 'ejs');
 
-var io = require('socket.io').listen(server); // see below for all the socket events and messages
-
 server.listen(8080, function(){
   console.log('listening on port', 8080);
 }); 
+
+var io = require('socket.io').listen(server); // see below for all the socket events and messages
 
 
 /*************************************
@@ -35,8 +34,9 @@ app.get('/', function(req, res){
 
 io.sockets.on('connection', function(socket) {
 
+  console.log('socket connected');
   // Let's assume a default connection to the "General" room
-  socket.room = 'general';
+  socket.room = 'room_general';
   socket.join(socket.room);
   socket.emit('connected');
   socket.emit('newRoom', socket.room)
@@ -51,5 +51,8 @@ io.sockets.on('connection', function(socket) {
     socket.leave(socket.room);
     socket.room = newRoom;
     socket.join(socket.room);
+    console.log('switching to', socket.room)
     socket.emit('newRoom', socket.room)
   })
+
+})

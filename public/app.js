@@ -1,0 +1,68 @@
+var socket = io.connect('http://localhost:8080');
+
+$(document).ready(function() {
+
+  socketEvents();
+
+  $('#write_msg form').on('submit', function(event) {
+    console.log('emitted a chat');
+    event.preventDefault();
+
+    var name = $('#nick');
+    var line = $('#text');
+    socket.emit('chat', {name: name.val(), line: line.val()});
+    writeLine(name.val(), line.val());
+    line.val("");
+  });
+
+  $('#chatroom_list li').on('click', function(){
+    // only emit the msg if clicked on the non-active room
+    var newRoom = $(this).attr('id');
+    console.log( newRoom !== $('.highlight').attr('id') )
+
+    if ( newRoom !== $('.highlight').attr('id') ){
+      console.log('emit switchRoom');
+      socket.emit('switchRoom', newRoom)
+    }
+  })
+})
+
+/*************************************
+// SOCKET
+*************************************/
+
+function socketEvents(){
+
+  socket.on('connected', function(room) {
+    console.log('connected');
+    // $('.connecting').slideUp();
+    $('input').attr('disabled', false);
+  });
+
+  socket.on('newRoom', function(newRoom){
+    // only do so when server confirms the change of newRoom
+    // empty the chat lines
+    $('#chatlines').empty();
+    // highlight the new newRoom
+    highlightRoom(newRoom);
+  });
+
+  socket.on('chat', function(data) {
+    writeLine(data.name, data.line);
+  });
+}
+
+/*************************************
+// CHAT FUNCTIONS
+*************************************/
+
+function writeLine(name, line) {
+  $('#chatlines').append('<li class="talk"><span class="nick">&lt;' + name + '&gt;</span> ' + line + '</li>');
+  $("#messages-list").scrollTop($("#messages-list")[0].scrollHeight);
+  // this works because I have the overflow set as hidden in CSS
+}
+
+function highlightRoom(room){
+  $("#chatroom_list li").removeClass('highlight');
+  $("#" + room).addClass('highlight');
+}

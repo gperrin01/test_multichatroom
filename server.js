@@ -21,7 +21,7 @@ var io = require('socket.io').listen(server); // see below for all the socket ev
 // DATABASE
 *************************************/
 // created a connection to the db from the server
-var db = require('./models');
+var Chatroom = require('./models').Chatroom;
 var bodyParser = require("body-parser");
 // body parser config
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -32,7 +32,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 *************************************/
 
 app.get('/', function(req, res){
-  res.render('index')
+  Chatroom.find({}, function(err, rooms){
+      res.render('index', {rooms: rooms})
+  })
 })
 
 

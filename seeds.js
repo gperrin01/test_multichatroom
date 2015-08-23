@@ -10,15 +10,21 @@ Chatroom.create({
 }, function(err, room) {
   if (err) { console.log(err) }
   else { console.log('general created');}
-  // James likes Mathilda
   Chatroom.create({
     name                  : 'Toys',
     messages              : []
   }, function(err, room2) {
     if (err) { console.log(err) }
     else { console.log('toys created');}
-    // exit the code      
-    process.exit();
+    Chatroom.create({
+      name: 'Art',
+      messages: []
+    }, function(err, room3){
+      if (err) { console.log(err) }
+      else { console.log('art created');}
+      // exit the code      
+      process.exit();
+    })
   })
 })
 

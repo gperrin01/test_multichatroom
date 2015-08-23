@@ -36,7 +36,7 @@ io.sockets.on('connection', function(socket) {
 
   console.log('socket connected');
   // Let's assume a default connection to the "General" room
-  socket.room = 'room_general';
+  socket.room = 'general';
   socket.join(socket.room);
   socket.emit('connected');
   socket.emit('newRoom', socket.room)

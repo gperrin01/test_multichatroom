@@ -17,10 +17,10 @@ $(document).ready(function() {
 
   $('#chatroom_list li').on('click', function(){
     // only emit the msg if clicked on the non-active room
-    var newRoom = $(this).attr('id');
-    console.log( newRoom !== $('.highlight').attr('id') )
+    var newRoom = $(this).attr('data-room');
+    console.log( newRoom !== $('.highlight').attr('data-room') )
 
-    if ( newRoom !== $('.highlight').attr('id') ){
+    if ( newRoom !== $('.highlight').attr('data-room') ){
       console.log('emit switchRoom');
       socket.emit('switchRoom', newRoom)
     }
@@ -41,8 +41,10 @@ function socketEvents(){
 
   socket.on('newRoom', function(newRoom){
     // only do so when server confirms the change of newRoom
-    // empty the chat lines
+    // empty the chat lines and add "welcome mssg"
     $('#chatlines').empty();
+    var msg = 'Welcome to the ' + newRoom + ' room.';
+    writeLine('Server', msg);
     // highlight the new newRoom
     highlightRoom(newRoom);
   });
@@ -64,5 +66,5 @@ function writeLine(name, line) {
 
 function highlightRoom(room){
   $("#chatroom_list li").removeClass('highlight');
-  $("#" + room).addClass('highlight');
+  $("#chatroom_list li[data-room='" + room + "']").addClass('highlight');
 }

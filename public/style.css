@@ -1,0 +1,20 @@
+.column {
+  border: 1px solid blue;
+  height: 500px;
+}
+
+.column li {
+  list-style-type: none;
+}
+
+#messages-list {
+  height: 450px;
+}
+
+#messages-list ul {
+  word-break: break-all;
+}
+
+#write_msg {
+  text-align: center;
+}

@@ -34,8 +34,38 @@
           <li><a href="#">I <span class="glyphicon glyphicon-heart"></span> 3D Printing</a></li>
         </ul> 
       </div> 
-    </div>   <!-- /.container-fluid -->
-  </nav>
+    </div>   
+  </nav> 
+  <!-- End Navbar -->
+
+  <!-- Container for the chat / keep everything in one column with offset-->
+  <div class="container-fluid">
+
+    <div class="col-xs-offset-1 col-xs-2 column" id="chatroom_list">
+      <ul>
+        <li id='room-1'>Room 1</li>
+        <li id='room-2'>Room 2</li>
+      </ul>
+    </div>
+
+    <div class="col-xs-6 column" id="chat_box">
+      <div class="row" id="messages-list">
+        <ul>
+          <li>Test message</li>
+        </ul>
+      </div>
+      <div class="row" id="write_msg">
+        <form>
+          <input id="nick" type="text" placeholder="Enter your name" disabled="disabled" />
+          <input type="text" id="text" placeholder="Enter text here" disabled="disabled"/>
+          <input type="submit" value="Send" disabled="disabled" />
+        </form>
+      </div>
+    </div>
+  
+
+  </div>
+  <!-- End of general chat container -->
 
 
 

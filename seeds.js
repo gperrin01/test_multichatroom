@@ -1,17 +1,17 @@
 var REPL = require('repl');
-var db = require('./models');
+var Chatroom = require('./models').Chatroom;
 
 //Remove all documents from the collection;
-db.Chatroom.collection.remove();
+Chatroom.collection.remove();
 
-db.Chatroom.create({
+Chatroom.create({
   name: 'General',
   messages: []
 }, function(err, room) {
   if (err) { console.log(err) }
   else { console.log('general created');}
   // James likes Mathilda
-  db.Chatroom.create({
+  Chatroom.create({
     name                  : 'Toys',
     messages              : []
   }, function(err, room2) {

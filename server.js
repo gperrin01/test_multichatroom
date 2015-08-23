@@ -17,6 +17,15 @@ server.listen(8080, function(){
 
 var io = require('socket.io').listen(server); // see below for all the socket events and messages
 
+/*************************************
+// DATABASE
+*************************************/
+// created a connection to the db from the server
+var db = require('./models');
+var bodyParser = require("body-parser");
+// body parser config
+app.use(bodyParser.urlencoded({ extended: true }));
+
 
 /*************************************
 // ROUTES

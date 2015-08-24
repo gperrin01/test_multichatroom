@@ -44,7 +44,8 @@ app.post('/chatrooms', function(req, res){
   Chatroom.findOne(
   {name: req.body.room}, function(err, room){
     console.log(err);
-    room.messages.push({name: req.body.name, line: req.body.line})
+    var time = new Date();
+     room.messages.push({name: req.body.name, line: req.body.line, created: time});
     console.log(room.messages);
     room.save();
   })

@@ -63,7 +63,7 @@
       <div class="row" id="messages-list">
         <ul id="chatlines">
         <% currRoomMsg.forEach(function(message){ %>
-          <li class='talk'><span class="nick">&lt<%= message.name %>&gt</span> <%= message.line %></li>
+          <li class='talk'><span class="nick">&lt<%= message.name %>&gt</span> <%= message.line %> <span class="small">(<%= message.created %>)</span></li>
         <% }) %>
         </ul>
       </div>

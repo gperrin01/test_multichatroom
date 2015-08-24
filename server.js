@@ -31,11 +31,24 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // ROUTES
 *************************************/
 
+// Send names of all chatrooms so they can be listed on the welcome page  
 app.get('/', function(req, res){
   Chatroom.find({}, function(err, rooms){
       res.render('index', {rooms: rooms})
   })
-})
+});
+
+// add msg to the DB for the room when someone sends a chat
+app.post('/chatrooms', function(req, res){
+  console.log('req', req.body);
+  Chatroom.findOne(
+  {name: req.body.room}, function(err, room){
+    console.log(err);
+    room.messages.push({name: req.body.name, line: req.body.line})
+    console.log(room.messages);
+    room.save();
+  })
+});
 
 
 

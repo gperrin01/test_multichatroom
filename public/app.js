@@ -10,9 +10,16 @@ $(document).ready(function() {
 
     var name = $('#nick');
     var line = $('#text');
-    socket.emit('chat', {name: name.val(), line: line.val()});
+    var room = $('.highlight').attr('data-room');
+    var data = {name: name.val(), line: line.val(), room: room};
+    socket.emit('chat', data);
     writeLine(name.val(), line.val());
     line.val("");
+
+    // add chat message to the database. Server will ensure it is created on current socket.room
+    $.post('/chatrooms', data, function(response){
+      console.log('response post', response);
+    } )
   });
 
   $('#chatroom_list li').on('click', function(){

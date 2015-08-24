@@ -44,11 +44,12 @@
   <!-- Container for the chat / keep everything in one column with offset-->
   <div class="container-fluid">
 
-    <div class="col-xs-offset-1 col-xs-2 column" id="chatroom_list">
+    <div class="col-xs-offset-2 col-xs-2 column" id="chatroom_list">
+      <h4>Current Chatrooms</h4>
       <ul>
       <% rooms.forEach(function(room){ %>
         <li data-room="<%= room.name %>"><%= room.name %></li>
-       <% })%>
+      <% }) %>
       </ul>
     </div>
 

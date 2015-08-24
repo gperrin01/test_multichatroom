@@ -10,14 +10,21 @@
 /****************
 CHAT LIST
 *****************/
+
 .highlight {
   background-color: #FF3056;
+  color: white;
 }
 #chatroom_list ul {
   padding-left: 0px;
 }
 #chatroom_list li {
   line-height: 35px;
+  padding-left: 15px;
+}
+
+#chatroom_list h4 {
+  text-align: center;
 }
 
 /****************
@@ -29,7 +36,13 @@ MESSAGES
 }
 
 #chatlines {
+  margin-top: 10px;
   word-break: break-all;
+}
+
+.nick {
+  font-weight: bold;
+  margin-right: 2px;
 }
 
 /****************

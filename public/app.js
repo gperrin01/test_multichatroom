@@ -11,15 +11,21 @@ $(document).ready(function() {
     var name = $('#nick');
     var line = $('#text');
     var room = $('.highlight').attr('data-room');
-    var data = {name: name.val(), line: line.val(), room: room};
-    socket.emit('chat', data);
-    writeLine(name.val(), line.val());
-    line.val("");
+    // only send the msg if user has put a username
+    // in the current absence of login, once the username input has been set once, it will be disabled until the page is refreshed
+    if (name.val() !== ''){
+      var data = {name: name.val(), line: line.val(), room: room};
+      socket.emit('chat', data);
+      writeLine(name.val(), line.val());
+      line.val("");
+      name.attr('disabled', true);
 
-    // add chat message to the database. Server will ensure it is created on current socket.room
-    $.post('/chatrooms', data, function(response){
-      console.log('response post', response);
-    } )
+      // add chat message to the database. Server will ensure it is created on current socket.room
+      $.post('/chatrooms', data, function(response){
+        console.log('response post', response);
+      })
+    }
+    else { alert('Please enter a username')};
   });
 
   $('#chatroom_list li').on('click', function(){

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <title>MyMiniFactoryChat</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+  <!-- 
+  <script src="/socket.io/socket.io.js"> </script>
+  <script src='app.js'></script>
+ -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700%7COpen+Sans:300,400italic,700italic,400,700" rel="stylesheet" type="text/css">
+  <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- Bootstrap Nav Bar -->
+  <nav id="main-navbar" class="navbar navbar-default">
+    <div id="main_navbar_container" class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mini_navbar_menu" aria-expanded="false">
+           <span class="glyphicon glyphicon-cog"></span>
+        </button>
+        <ul class="nav navbar-nav navbar-left">
+           <li><a id="brand_name" class="navbar-brand" href="#">MY MINI FACTORY - TV</a></li>
+           <li><a href="#" class="sub-brand">Live Streaming and Chatrooms</a></li>
+        </ul>
+      </div>
+      <div class="collapse navbar-collapse" id="mini_navbar_menu">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="https://www.myminifactory.com/">About</a></li>
+          <li><a href="http://www.myminifactory.com/tv/list">TV</a></li>
+          <li><a href="#">I <span class="glyphicon glyphicon-heart"></span> 3D Printing</a></li>
+        </ul> 
+      </div> 
+    </div>   
+  </nav> 
+  <!-- End Navbar -->
+
+  <!-- Container for the chat / keep everything in one column with offset-->
+  <div class="container-fluid">
+
+    <div class="col-xs-offset-2 col-xs-2 column" id="chatroom_list">
+      <h4>Current Chatrooms</h4>
+      <ul>
+      <% rooms.forEach(function(room){ %>
+        <li data-room="<%= room.name %>"><a href="/<%= room.name %>"></a><%= room.name %></li>
+      <% }) %>
+      </ul>
+    </div>
+
+    <div class="col-xs-6 column" id="chat_box">
+      <div class="row" id="messages-list">
+        <ul id="chatlines">
+        <% currRoomMsg.forEach(function(message){ %>
+          <li class='talk'><span class="nick">&lt<%= message.name %>&gt</span> <%= message.line %></li>
+        <% }) %>
+        </ul>
+      </div>
+    </div>
+  
+
+  </div>
+  <!-- End of general chat container -->
+
+
+
+  
+</body>
+</html>

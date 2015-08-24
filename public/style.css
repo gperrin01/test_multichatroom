@@ -86,6 +86,9 @@ MESSAGES
   font-weight: bold;
   margin-right: 2px;
 }
+.small {
+  font-size: 0.7em;
+}
 
 /****************
 FORM TO SEND MSG

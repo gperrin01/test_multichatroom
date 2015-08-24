@@ -22,6 +22,8 @@ Navigate to `localhost:8088/:chatroomname` to see the chat history for a given c
 Messages will be listed in reverse of timestamp, i.e. recent messages at the top of the page. Each message also shows the sender's username as well as the timestamp in a smaller font-size on the side.
 I have not yet implemented the administrator login so anyone can visit this page.
 
+Once "logged in as admin" on any of the chat histories, you can click on any of the chatroom name on the left-hand side to see the full history for that chat too (the `<a href>` have been changed for that bit so no need to manually type the url)
+
 Note: as I was about to push the code, I noticed the messages in the history do not scroll down the div nicely as they do in the normal chat. I think it is because I used EJS to iterate through the messages and could not add the same `scrollTop / scrollHeight` function as above.
 
 ### Front-end

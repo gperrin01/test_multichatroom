@@ -1,4 +1,3 @@
-var REPL = require('repl');
 var Chatroom = require('./models').Chatroom;
 
 //Remove all documents from the collection;

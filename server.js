@@ -11,8 +11,8 @@ app.use(express.static(__dirname + '/public'));
 app.set('/views', './views');
 app.set('view engine', 'ejs');
 
-server.listen(8080, function(){
-  console.log('listening on port', 8080);
+server.listen(8088, function(){
+  console.log('listening on port', 8088);
 }); 
 
 var io = require('socket.io').listen(server); // see below for all the socket events and messages

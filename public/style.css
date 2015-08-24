@@ -1,6 +1,28 @@
+body {
+  background: rgb(233, 233, 233);
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+/****************
+NAV
+*****************/
+#main-navbar {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 1.3em;
+  font-weight: 600;
+}
+
+#main-navbar #brand_name {
+  font-weight: 700;
+  color: black;
+  font-size: 1.5em;
+}
+
 .column {
-  border: 1px solid blue;
+  border: 2px solid #E8E8EF;
   height: 500px;
+  background-color: #F7F4F4;
+  border-radius: 12px;
 }
 
 .column li {
@@ -21,10 +43,13 @@ CHAT LIST
 #chatroom_list li {
   line-height: 35px;
   padding-left: 15px;
+  font-size: 1.2em;
+  font-weight: 600;
 }
 
 #chatroom_list h4 {
   text-align: center;
+  font-size: 1.4em;
 }
 
 /****************
@@ -33,6 +58,10 @@ MESSAGES
 #messages-list {
   height: 450px;
   overflow: hidden; 
+}
+
+#messages-list li {
+  font-size: 1.2em;
 }
 
 #chatlines {
@@ -50,4 +79,8 @@ FORM TO SEND MSG
 *****************/
 #write_msg {
   text-align: center;
+  font-size: 1.3em;
+}
+#text {
+  width: 35%;
 }

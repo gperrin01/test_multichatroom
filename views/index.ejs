@@ -52,6 +52,10 @@
         <li><a href="#" data-room="<%= room.name %>"> <%= room.name %></a></li>
       <% }) %>
       </ul>
+      <form id='create_room'>
+        <input id="new_room" type="text" placeholder="Create new room" disabled="disabled" />
+        <input type="submit" value="Create" disabled="disabled" />
+      </form>
     </div>
 
     <div class="col-xs-6 column" id="chat_box">

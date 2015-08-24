@@ -39,7 +39,7 @@ app.get('/', function(req, res){
 });
 
 // add msg to the DB for the room when someone sends a chat
-app.post('/:chatroom', function(req, res){
+app.post('/chatrooms/:chatroom', function(req, res){
   console.log('req', req.body);
   Chatroom.findOne(
   {name: req.body.room}, function(err, room){
@@ -62,6 +62,19 @@ app.get('/:chatroom', function(req, res){
       console.log('reverse msg', reverseOrderMsg);
       res.render('admin', {rooms: rooms, currRoomMsg: reverseOrderMsg, roomName: currRoom.name})
     })
+  })
+})
+
+// create a new chatroom
+app.post('/chatrooms', function(req, res){
+  console.log(req.body);
+  Chatroom.create({
+    name: req.body.room,
+    messages: []
+  }, function(err, room){
+    if (err) console.log(err);
+    console.log('created', room.name);
+    res.send(room);
   })
 })
 

@@ -3,7 +3,8 @@ var socket = io.connect('http://localhost:8088');
 $(document).ready(function() {
   socketEvents();
   $('#write_msg form').on('submit', sendChatMessage);
-  $('#chatroom_list a').on('click', switchChatRoom);
+  $('#chatroom_list').on('click', 'a', switchChatRoom);
+  $('#create_room').on('submit', createRoom);
 })
 
 /*************************************
@@ -28,7 +29,7 @@ function sendChatMessage() {
     name.attr('disabled', true);
 
     // add chat message to the database
-    $.post('/'+room, data, function(response){
+    $.post('/chatrooms/' + room, data, function(response){
       console.log('response post', response);
     })
   }
@@ -54,6 +55,15 @@ function highlightRoom(room){
   $("#chatroom_list a[data-room='" + room + "']").parent().addClass('highlight');
 }
 
+function createRoom(){
+  event.preventDefault();
+  var room = $('#new_room').val();
+  $.post('/chatrooms', {room: room}, function(response){
+    // add new room to the list and ready to add msg to it
+    var li = '<li><a href="#" data-room="' + response.name + '">' + response.name + '</a></li>';
+    $('#chatroom_list ul').append(li);
+  })
+}
 
 /*************************************
 // SOCKET

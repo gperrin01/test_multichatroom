@@ -59,7 +59,7 @@ app.get('/:chatroom', function(req, res){
       if (err) console.log(err); 
       var reverseOrderMsg = currRoom.messages.reverse();
       console.log('reverse msg', reverseOrderMsg);
-      res.render('admin', {rooms: rooms, currRoomMsg: reverseOrderMsg})
+      res.render('admin', {rooms: rooms, currRoomMsg: reverseOrderMsg, roomName: currRoom.name})
     })
   })
 })

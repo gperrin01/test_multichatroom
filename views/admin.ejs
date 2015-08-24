@@ -50,7 +50,11 @@
       <h4>Current Chatrooms</h4>
       <ul>
       <% rooms.forEach(function(room){ %>
+        <% if (room.name === roomName) { %>
+        <li class='highlight'><a href="/<%= room.name %>" data-room="<%= room.name %>"><%= room.name %></a></li>
+        <% } else { %>
         <li data-room="<%= room.name %>"><a href="/<%= room.name %>"><%= room.name %></a></li>
+        <% } %>
       <% }) %>
       </ul>
     </div>

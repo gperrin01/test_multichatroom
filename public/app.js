@@ -28,12 +28,12 @@ $(document).ready(function() {
     else { alert('Please enter a username')};
   });
 
-  $('#chatroom_list li').on('click', function(){
+  $('#chatroom_list a').on('click', function(){
     // only emit the msg if clicked on the non-active room
     var newRoom = $(this).attr('data-room');
-    console.log( newRoom !== $('.highlight').attr('data-room') )
+    console.log( newRoom !== $('.highlight > a').attr('data-room') )
 
-    if ( newRoom !== $('.highlight').attr('data-room') ){
+    if ( newRoom !== $('.highlight > a').attr('data-room') ){
       console.log('emit switchRoom');
       socket.emit('switchRoom', newRoom)
     }
@@ -48,7 +48,6 @@ function socketEvents(){
 
   socket.on('connected', function(room) {
     console.log('connected');
-    // $('.connecting').slideUp();
     $('input').attr('disabled', false);
   });
 
@@ -79,5 +78,5 @@ function writeLine(name, line) {
 
 function highlightRoom(room){
   $("#chatroom_list li").removeClass('highlight');
-  $("#chatroom_list li[data-room='" + room + "']").addClass('highlight');
+  $("#chatroom_list a[data-room='" + room + "']").parent().addClass('highlight');
 }

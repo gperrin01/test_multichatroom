@@ -2,6 +2,9 @@ body {
   background: rgb(233, 233, 233);
   font-family: 'Open Sans Condensed', sans-serif;
 }
+a {
+  color: black;
+}
 
 /****************
 NAV
@@ -29,14 +32,24 @@ NAV
   list-style-type: none;
 }
 
+.glyphicon-heart {
+  color: red;
+}
+.glyphicon-heart:hover {
+  color: blue;
+}
+
 /****************
 CHAT LIST
 *****************/
 
 .highlight {
   background-color: #FF3056;
+}
+.highlight a {
   color: white;
 }
+
 #chatroom_list ul {
   padding-left: 0px;
 }

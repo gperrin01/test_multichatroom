@@ -50,6 +50,19 @@ app.post('/chatrooms', function(req, res){
   })
 });
 
+// let admin see chat history for a given room
+app.get('/:chatroom', function(req, res){
+  console.log('req', req.params.chatroom);
+  Chatroom.find({}, function(err, rooms){
+    if (err) console.log(err); 
+    Chatroom.findOne({name: req.params.chatroom}, function(err, currRoom){
+      if (err) console.log(err); 
+      var reverseOrderMsg = currRoom.messages.reverse();
+      console.log('reverse msg', reverseOrderMsg);
+      res.render('admin', {rooms: rooms, currRoomMsg: reverseOrderMsg})
+    })
+  })
+})
 
 
 /*************************************

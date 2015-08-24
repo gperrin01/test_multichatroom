@@ -39,11 +39,11 @@ app.get('/', function(req, res){
 });
 
 // add msg to the DB for the room when someone sends a chat
-app.post('/chatrooms', function(req, res){
+app.post('/:chatroom', function(req, res){
   console.log('req', req.body);
   Chatroom.findOne(
   {name: req.body.room}, function(err, room){
-    console.log(err);
+    if (err) console.log(err);
     var time = new Date();
      room.messages.push({name: req.body.name, line: req.body.line, created: time});
     console.log(room.messages);
